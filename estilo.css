@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    background-color: #121214;
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    display: grid;
+    min-height: 100vh;
+ 
+}
+.caixa-tempo {
+    font-size: 8.8rem;
+}
+
+.controls {
+    background-color: hsla(194, 100%, 63%, 0.13);
+    border-radius: 50rem;
+    padding: 2.2rem 4rem;
+    width: 22.8rem;
+    display: flex;
+    justify-content: center;
+    gap: 3.2rem;
+    
+}
+button {
+    background-color: transparent;
+    border: none;
+
+
+
+    
+}
+main {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    align-self: end;
+    gap: 1.6rem;
+
+}
+footer {
+    padding: 5rem;
+    place-self: end;
+  
+}
