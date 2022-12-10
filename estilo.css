@@ -15,8 +15,12 @@ body {
     color: #FFFFFF;
     display: grid;
     min-height: 100vh;
- 
 }
+
+.hide {
+    display: none;
+}
+
 .caixa-tempo {
     font-size: 8.8rem;
 }
@@ -34,11 +38,9 @@ body {
 button {
     background-color: transparent;
     border: none;
-
-
-
     
 }
+
 main {
 
     display: flex;
