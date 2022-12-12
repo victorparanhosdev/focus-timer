@@ -7,61 +7,98 @@ const Botoes = {
     botaoMute: document.querySelector('.btn-mute'),
 }
 
-
+let timeClearOut;
 let minutos = document.querySelector('.minutes')
 let segundos = document.querySelector('.seconds')
-
-
 
 
 function Contagem(){
   
 
-  
-    
-    
+if(minutos.textContent != 0 || segundos.textContent != 0 ){
+ 
 
+ timeClearOut = setTimeout(()=> {
 
-    setTimeout(()=>{
+   
 
-      
+      if(segundos.textContent <= 0){
+          --minutos.textContent
+          segundos.textContent = 60
+        }
         
+    segundos.textContent--
+    Contagem()
+
        
-
-
-
         
 
-        
+  }, 1000)
+   
+}else {
+    Botoes.botaoPause.classList.add('hide')
+    Botoes.botaoStop.classList.add('hide')
+    Botoes.botaoPlay.classList.remove('hide')
+    Botoes.botaoConfig.classList.remove('hide')
+    clearTimeout(timeClearOut)
+    minutos.textContent = "00"
+    segundos.textContent = "00"
+    return
 
-
-
-    }, 1000)
 }
 
+
+}
+
+
+  
+
+
+
 Botoes.botaoPlay.addEventListener('click', ()=> {
-    Botoes.botaoPause.classList.remove('hide')
-    Botoes.botaoStop.classList.remove('hide')
-    Botoes.botaoPlay.classList.add('hide')
-    Botoes.botaoConfig.classList.add('hide')
+
+    if(minutos.textContent != 0 || segundos.textContent != 0){
+        Botoes.botaoPause.classList.remove('hide')
+        Botoes.botaoStop.classList.remove('hide')
+        Botoes.botaoPlay.classList.add('hide')
+        Botoes.botaoConfig.classList.add('hide')
+
+        if(segundos.textContent <= 0){
+          --minutos.textContent
+          segundos.textContent = 59
+        }
+
+        Contagem()
+
+    }else  {
+        alert('Por favor, escolha um Tempo')
+    }
+
     
-    Contagem()
+    
+   
+  
 
 })
 
 Botoes.botaoPause.addEventListener('click', ()=> {
     Botoes.botaoPause.classList.add('hide')
     Botoes.botaoPlay.classList.remove('hide')
+    clearTimeout(timeClearOut)
+   
+    
 
 })
 
 Botoes.botaoConfig.addEventListener('click', ()=> {
-    let numeroInfo = Number(prompt('Escolha o número: '))
+    let numeroInfo = prompt('Escolha o número: ')
 
     if(numeroInfo == '' || numeroInfo == null ){
         return
     }else {
         minutos.textContent = numeroInfo
+        
+        
     }  
 
     
@@ -87,5 +124,9 @@ Botoes.botaoStop.addEventListener('click', ()=> {
     Botoes.botaoConfig.classList.remove('hide')
     minutos.textContent = "00"
     segundos.textContent = "00"
+    clearTimeout(timeClearOut)
+    
+ 
 
 })
+
