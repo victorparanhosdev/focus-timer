@@ -10,10 +10,17 @@ const Botoes = {
 let timeClearOut;
 let minutos = document.querySelector('.minutes')
 let segundos = document.querySelector('.seconds')
+let min;
+
+function updateDisplay(minutes, seconds){
+    minutos.textContent = String(minutes).padStart(2, "0")
+    segundos.textContent = String(seconds).padStart(2, "0")
+}
+
 
 
 function Contagem(){
-  
+
 
 if(minutos.textContent != 0 || segundos.textContent != 0 ){
  
@@ -23,11 +30,13 @@ if(minutos.textContent != 0 || segundos.textContent != 0 ){
        
 
       if(segundos.textContent <= 0){
-          --minutos.textContent
+          String(--minutos.textContent).padStart(2, "0")
           segundos.textContent = 60
         }
         
-    segundos.textContent--
+    
+    updateDisplay(minutos.textContent, Number(segundos.textContent -1))
+
     
     Contagem()
 
@@ -40,8 +49,8 @@ if(minutos.textContent != 0 || segundos.textContent != 0 ){
     
     resetTime()
     clearTimeout(timeClearOut)
-    minutos.textContent = "00"
-    segundos.textContent = "00"
+    minutos.textContent = 0
+    segundos.textContent = 0
     return
 
 }
@@ -68,7 +77,7 @@ Botoes.botaoPlay.addEventListener('click', ()=> {
         Botoes.botaoConfig.classList.add('hide')
 
         if(segundos.textContent <= 0){
-          --minutos.textContent
+         updateDisplay(Number(minutos.textContent)-1)
           segundos.textContent = 59
         }
 
@@ -95,14 +104,14 @@ Botoes.botaoPause.addEventListener('click', ()=> {
 })
 
 Botoes.botaoConfig.addEventListener('click', ()=> {
-    let numeroInfo = prompt('Escolha o número: ')
+    let numeroInfo = String(prompt('Escolha o número: ')).padStart(2, "0")
 
     if(numeroInfo == '' || numeroInfo == null ){
         return
     }else {
-        minutos.textContent = numeroInfo
-        
-        
+      minutos.textContent = numeroInfo
+      min = numeroInfo
+    
     }  
 
     
@@ -122,12 +131,12 @@ Botoes.botaoMute.addEventListener('click', ()=> {
 
 Botoes.botaoStop.addEventListener('click', ()=> {
     
-    resetTime ()
-    minutos.textContent = "00"
-    segundos.textContent = "00"
+    resetTime()
+    updateDisplay(min, 0)
     clearTimeout(timeClearOut)
     
- 
+
 
 })
+
 
