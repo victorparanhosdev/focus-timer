@@ -12,130 +12,80 @@ let minutos = document.querySelector('.minutes')
 let segundos = document.querySelector('.seconds')
 let min;
 
-function updateDisplay(minutes, seconds){
+function updateDisplay(minutes, seconds) {
     minutos.textContent = String(minutes).padStart(2, "0")
     segundos.textContent = String(seconds).padStart(2, "0")
 }
 
+function Contagem() {
+    if (minutos.textContent != 0 || segundos.textContent != 0) {
+        timeClearOut = setTimeout(() => {
+            if (segundos.textContent <= 0) {
+                String(--minutos.textContent).padStart(2, "0")
+                segundos.textContent = 60
+            }
+            updateDisplay(minutos.textContent, Number(segundos.textContent) - 1)
+            Contagem()
+        }, 1000)
 
-
-function Contagem(){
-
-
-if(minutos.textContent != 0 || segundos.textContent != 0 ){
- 
-
- timeClearOut = setTimeout(()=> {
-
-       
-
-      if(segundos.textContent <= 0){
-          String(--minutos.textContent).padStart(2, "0")
-          segundos.textContent = 60
-        }
-        
-    
-    updateDisplay(minutos.textContent, Number(segundos.textContent -1))
-
-    
-    Contagem()
-
-       
-        
-
-  }, 1000)
-   
-}else {
-    
-    resetTime()
-    clearTimeout(timeClearOut)
-    updateDisplay(0, 0)
-    return
+    } else {
+        resetTime()
+        clearTimeout(timeClearOut)
+        updateDisplay(0, 0)
+        return
+    }
 
 }
 
-
-}
-
-function resetTime (){
+function resetTime() {
     Botoes.botaoPause.classList.add('hide')
     Botoes.botaoStop.classList.add('hide')
     Botoes.botaoPlay.classList.remove('hide')
     Botoes.botaoConfig.classList.remove('hide')
 }
-  
 
 
+Botoes.botaoPlay.addEventListener('click', () => {
 
-Botoes.botaoPlay.addEventListener('click', ()=> {
-
-    if(minutos.textContent != 0 || segundos.textContent != 0){
+    if (minutos.textContent != 0 || segundos.textContent != 0) {
         Botoes.botaoPause.classList.remove('hide')
         Botoes.botaoStop.classList.remove('hide')
         Botoes.botaoPlay.classList.add('hide')
         Botoes.botaoConfig.classList.add('hide')
-
-        if(segundos.textContent <= 0){
-         updateDisplay(Number(minutos.textContent)-1)
-          segundos.textContent = 59
-        }
-
         Contagem()
 
-    }else  {
+    } else {
         alert('Por favor, escolha um Tempo')
     }
 
-    
-    
-   
-  
-
 })
 
-Botoes.botaoPause.addEventListener('click', ()=> {
+Botoes.botaoPause.addEventListener('click', () => {
     Botoes.botaoPause.classList.add('hide')
     Botoes.botaoPlay.classList.remove('hide')
     clearTimeout(timeClearOut)
-   
-    
-
 })
 
-Botoes.botaoConfig.addEventListener('click', ()=> {
-    let numeroInfo = prompt('Escolha o número: ')
-
-    if(numeroInfo == '' || numeroInfo == null ){
-        return
-    }else {
-      minutos.textContent = String(numeroInfo).padStart(2, "0")
-      min = numeroInfo
-    
-    }  
-
-    
-
+Botoes.botaoConfig.addEventListener('click', () => {
+    let numeroInfo = prompt('Escolha o número: ') || 0
+    minutos.textContent = String(numeroInfo).padStart(2, "0")
+    min = numeroInfo
 })
 
-
-Botoes.botaoSound.addEventListener('click', ()=> {
+Botoes.botaoSound.addEventListener('click', () => {
     Botoes.botaoMute.classList.remove('hide')
     Botoes.botaoSound.classList.add('hide')
 })
 
-Botoes.botaoMute.addEventListener('click', ()=> {
+Botoes.botaoMute.addEventListener('click', () => {
     Botoes.botaoMute.classList.add('hide')
     Botoes.botaoSound.classList.remove('hide')
 })
 
-Botoes.botaoStop.addEventListener('click', ()=> {
-    
+Botoes.botaoStop.addEventListener('click', () => {
     resetTime()
     updateDisplay(min, 0)
     clearTimeout(timeClearOut)
-    
-
-
 })
 
 
