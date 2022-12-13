@@ -104,12 +104,12 @@ Botoes.botaoPause.addEventListener('click', ()=> {
 })
 
 Botoes.botaoConfig.addEventListener('click', ()=> {
-    let numeroInfo = String(prompt('Escolha o número: ')).padStart(2, "0")
+    let numeroInfo = prompt('Escolha o número: ')
 
     if(numeroInfo == '' || numeroInfo == null ){
         return
     }else {
-      minutos.textContent = numeroInfo
+      minutos.textContent = String(numeroInfo).padStart(2, "0")
       min = numeroInfo
     
     }  
