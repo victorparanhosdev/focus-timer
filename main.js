@@ -49,8 +49,7 @@ if(minutos.textContent != 0 || segundos.textContent != 0 ){
     
     resetTime()
     clearTimeout(timeClearOut)
-    minutos.textContent = 0
-    segundos.textContent = 0
+    updateDisplay(0, 0)
     return
 
 }
