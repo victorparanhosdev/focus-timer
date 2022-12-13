@@ -55,7 +55,7 @@ Botoes.botaoPlay.addEventListener('click', () => {
         Contagem()
 
     } else {
-        alert('Por favor, escolha um Tempo')
+        alert('Por favor, escolha o tempo')
     }
 
 })
