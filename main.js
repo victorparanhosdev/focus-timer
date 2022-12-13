@@ -20,7 +20,7 @@ if(minutos.textContent != 0 || segundos.textContent != 0 ){
 
  timeClearOut = setTimeout(()=> {
 
-   
+       
 
       if(segundos.textContent <= 0){
           --minutos.textContent
@@ -28,6 +28,7 @@ if(minutos.textContent != 0 || segundos.textContent != 0 ){
         }
         
     segundos.textContent--
+    
     Contagem()
 
        
@@ -36,10 +37,8 @@ if(minutos.textContent != 0 || segundos.textContent != 0 ){
   }, 1000)
    
 }else {
-    Botoes.botaoPause.classList.add('hide')
-    Botoes.botaoStop.classList.add('hide')
-    Botoes.botaoPlay.classList.remove('hide')
-    Botoes.botaoConfig.classList.remove('hide')
+    
+    resetTime()
     clearTimeout(timeClearOut)
     minutos.textContent = "00"
     segundos.textContent = "00"
@@ -50,7 +49,12 @@ if(minutos.textContent != 0 || segundos.textContent != 0 ){
 
 }
 
-
+function resetTime (){
+    Botoes.botaoPause.classList.add('hide')
+    Botoes.botaoStop.classList.add('hide')
+    Botoes.botaoPlay.classList.remove('hide')
+    Botoes.botaoConfig.classList.remove('hide')
+}
   
 
 
@@ -118,10 +122,7 @@ Botoes.botaoMute.addEventListener('click', ()=> {
 
 Botoes.botaoStop.addEventListener('click', ()=> {
     
-    Botoes.botaoPause.classList.add('hide')
-    Botoes.botaoPlay.classList.remove('hide')
-    Botoes.botaoStop.classList.add('hide')
-    Botoes.botaoConfig.classList.remove('hide')
+    resetTime ()
     minutos.textContent = "00"
     segundos.textContent = "00"
     clearTimeout(timeClearOut)
