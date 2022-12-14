@@ -33,6 +33,9 @@ function Contagem() {
         clearTimeout(timeClearOut)
         updateDisplay(0, 0)
         kitchenTimer.play()
+        bgAudio.pause()
+        Botoes.botaoMute.classList.remove('hide')
+        Botoes.botaoSound.classList.add('hide')
         return
     }
 
@@ -58,7 +61,7 @@ Botoes.botaoPlay.addEventListener('click', () => {
 
 
     } else {
-        alert('Por favor, escolha o tempo')
+        alert('Por favor, escolher o tempo')
     }
 
 })
@@ -67,10 +70,11 @@ Botoes.botaoPause.addEventListener('click', () => {
     Botoes.botaoPause.classList.add('hide')
     Botoes.botaoPlay.classList.remove('hide')
     clearTimeout(timeClearOut)
+    buttonPressAudio.play()
 })
 
 Botoes.botaoConfig.addEventListener('click', () => {
-    let numeroInfo = prompt('Escolha o número: ') || 0
+    let numeroInfo = prompt('Escolha o Tempo: ') || 0
     minutos.textContent = String(numeroInfo).padStart(2, "0")
     min = numeroInfo
 })
