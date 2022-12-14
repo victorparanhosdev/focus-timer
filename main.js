@@ -10,7 +10,7 @@ const Botoes = {
 let timeClearOut;
 let minutos = document.querySelector('.minutes')
 let segundos = document.querySelector('.seconds')
-let min;
+let min = 0
 
 function updateDisplay(minutes, seconds) {
     minutos.textContent = String(minutes).padStart(2, "0")
@@ -32,6 +32,7 @@ function Contagem() {
         resetTime()
         clearTimeout(timeClearOut)
         updateDisplay(0, 0)
+        kitchenTimer.play()
         return
     }
 
@@ -52,7 +53,9 @@ Botoes.botaoPlay.addEventListener('click', () => {
         Botoes.botaoStop.classList.remove('hide')
         Botoes.botaoPlay.classList.add('hide')
         Botoes.botaoConfig.classList.add('hide')
+        buttonPressAudio.play()
         Contagem()
+
 
     } else {
         alert('Por favor, escolha o tempo')
@@ -75,17 +78,33 @@ Botoes.botaoConfig.addEventListener('click', () => {
 Botoes.botaoSound.addEventListener('click', () => {
     Botoes.botaoMute.classList.remove('hide')
     Botoes.botaoSound.classList.add('hide')
+    bgAudio.muted = true
+    
 })
 
 Botoes.botaoMute.addEventListener('click', () => {
     Botoes.botaoMute.classList.add('hide')
     Botoes.botaoSound.classList.remove('hide')
+    bgAudio.play()
+    bgAudio.loop = true
+    bgAudio.muted = false
+  
 })
 
 Botoes.botaoStop.addEventListener('click', () => {
     resetTime()
     updateDisplay(min, 0)
     clearTimeout(timeClearOut)
+    buttonPressAudio.play()
 })
+
+
+  
+const buttonPressAudio = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/button-press.wav?raw=true")
+
+const kitchenTimer = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/kichen-timer.mp3?raw=true")
+
+const bgAudio = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/bg-audio.mp3?raw=true")
+
 
 

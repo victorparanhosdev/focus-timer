@@ -23,6 +23,7 @@ body {
 
 .caixa-tempo {
     font-size: 8.8rem;
+    display: flex;
 }
 
 .controls {
@@ -53,7 +54,7 @@ main {
 
 }
 footer {
-    padding: 5rem;
+    padding: 3.2rem 4rem;
     place-self: end;
   
 }
