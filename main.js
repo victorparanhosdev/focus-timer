@@ -29,10 +29,10 @@ function Contagem() {
         }, 1000)
 
     } else {
+        kitchenTimer.play()
         resetTime()
         clearTimeout(timeClearOut)
         updateDisplay(0, 0)
-        kitchenTimer.play()
         bgAudio.pause()
         Botoes.botaoMute.classList.remove('hide')
         Botoes.botaoSound.classList.add('hide')
@@ -109,7 +109,3 @@ const buttonPressAudio = new Audio("https://github.com/maykbrito/automatic-video
 const kitchenTimer = new Audio("./files/audios_kichen-timer.mp3")
 
 const bgAudio = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/bg-audio.mp3?raw=true")
-
-
-
-console.log(kitchenTimer)
