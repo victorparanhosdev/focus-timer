@@ -24,6 +24,7 @@ body {
 .caixa-tempo {
     font-size: 8.8rem;
     display: flex;
+    font-weight: 700;
 }
 
 .controls {

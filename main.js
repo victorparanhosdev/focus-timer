@@ -106,9 +106,10 @@ Botoes.botaoStop.addEventListener('click', () => {
   
 const buttonPressAudio = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/button-press.wav?raw=true")
 
-const kitchenTimer = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/kichen-timer.mp3?raw=true")
+const kitchenTimer = new Audio("./files/audios_kichen-timer.mp3")
 
 const bgAudio = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/bg-audio.mp3?raw=true")
 
 
 
+console.log(kitchenTimer)
